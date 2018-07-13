@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebMVCv13.Models.DB.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<style type="text/css">
+    .btncreate{
+        margin:auto;
+        margin-top:0.5%;
+        margin-left:5%;
+        
+
+    }
+</style>
+<table class="table table-bordered " style="width:90%; margin:auto; margin-top:0.5%; text-align:center">
+    <tr style="background-color:antiquewhite">
+        <th>
+            Username
+        </th>
+        <th>
+            Password
+        </th>
+        <th>Edit</th>
+        <th>Details</th>
+        <th>Delete</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="background-color:cadetblue">
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassWord)
+            </td>
+            <td>
+                <button type="button" class="btn">@Html.ActionLink("Edit", "Edit", new { id = item.ID })</button>
+
+            </td>
+            <td>
+                <button type="button" class="btn ">@Html.ActionLink("Details", "Details", new {@class= "glyphicon-remove", id = item.ID })</button>
+            </td>
+            <td style="color:white">
+                <button class="btn">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </button>
+                
+             
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="btncreate" >
+    <button type="button" class="btn ">@Html.ActionLink("Create", "Create")</button>
+</div>

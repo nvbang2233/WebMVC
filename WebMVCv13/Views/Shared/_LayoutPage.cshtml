@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Css/Admin/Style.css" rel="stylesheet" />
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="header table-bordered ">
+
+    </div>
+    <div class="leftside table-bordered ">
+        <a href="@Url.Action("Index","Orders")" class="list-group-item">Add Order</a>
+        <a href="#" class="list-group-item">Second item</a>
+        <a href="#" class="list-group-item">Third item</a>
+    </div>
+    <div class="content table-bordered">
+
+             @RenderBody()
+
+    </div>
+    
+       
+   
+</body>
+</html>

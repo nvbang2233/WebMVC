@@ -1,0 +1,83 @@
+﻿@model WebMVCv13.Models.DB.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<link href="~/Css/Admin/Style.css" rel="stylesheet" />
+<script src="~/scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2>Details Order</h2>
+<hr />
+<div>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            @*<th>
+                Order Time
+            </th>*@
+            <th>
+                Total Money
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Product.Name_Product)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Email)
+            </td>
+            <td>
+               <input id="quantity" style="border:none; background-color:white" value="@Html.DisplayFor(model => model.Quantity)" disabled />
+            </td>
+            <td>
+                <input id="price" style="border:none; background-color:white" value="@Html.DisplayFor(model => model.Product.Price)" disabled />
+                
+                
+            </td>
+            <td>
+                <p id="totalmoney"></p>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="~/scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+            var price = $("#price").val();
+            var quantity = $("#quantity").val();
+            var total = price * quantity;
+             document.getElementById("totalmoney").innerHTML = total ;
+    });
+</script>

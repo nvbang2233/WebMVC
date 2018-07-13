@@ -1,0 +1,98 @@
+﻿@model PagedList.IPagedList<WebMVCv13.Models.DB.Order>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<h2 style="text-align:center">Order Infomation</h2>
+<hr />
+<a class="btn btn-secondary glyphicon glyphicon-plus" href="@Url.Action("Create","Orders")"> Create New Order </a>
+
+@using (@Html.BeginForm("Search", "Orders", FormMethod.Get))
+{
+    <div style="float:right; margin-top:-3%; width:300px; margin-right:7%">
+        @Html.TextBox("search") 
+        <button type="submit" class="btn btn-success">Search</button>
+    </div>
+
+}
+
+<hr />
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Edit
+        </th>
+        <th>
+            Details
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name_Product)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "Orders", new { id = item.ID_Order })"> Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-info glyphicon glyphicon-file" href="@Url.Action("Details", "Orders", new { id = item.ID_Order })"> Detail</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of
+    @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</p>
+@*<button id="a">oke</button>*@
+<script src="~/scripts/jquery-3.3.1.min.js"></script>
+<script>
+    //$(document).ready(function () {
+    //    $("#totalmoney").load(function () {
+    //        var price = $("#price").val();
+    //        var quantity = $("#quantity").val();
+    //        var total = price * quantity;
+    //         document.getElementById("totalmoney").innerHTML = total ;
+
+    //    });
+
+    //});
+</script>

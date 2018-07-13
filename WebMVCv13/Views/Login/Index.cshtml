@@ -1,0 +1,145 @@
+﻿@model WebMVCv13.Models.DB.Account
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Css/Login/style.css" rel="stylesheet" />
+    <script src="@Url.Content("~/scripts/jquery-3.3.1.js")" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+            @using (Html.BeginForm("CreateAccount", "Login", FormMethod.Post, new { @class = "frm", @hidden = ""  ,@required="" }))
+            {
+                <h3>CREATE ACCOUNT</h3>
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @placeholder = "username", @type = "text", @required = "", @id = "username" } })
+                <br />
+                @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @type = "password", @placeholder = "Password", @required = "", @id = "password" } })
+                <br />
+              // <span class="MessEr" style="color:red">@Html.DisplayFor(model => model.MessErr, new { @style = "color:red" })</span> 
+                <p class="message">Already registered? <a href="#">Sign In</a></p><br />
+                <button type="submit">create</button>
+            }
+            @*<form id="frLogin" class="login-form" method="post">*@
+            @using (Html.BeginForm("Autherize", "Login", FormMethod.Post, new { @class = "frm" }))
+            {
+                <h3>LOGIN</h3>
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @placeholder = "username", @type = "text", @required = "", @id = "username" } })
+                <br />
+                @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @type = "password" , @placeholder = "Password" } } )
+                <br />
+              // <span class="MessEr"  style="color:red" >@Html.DisplayFor(model => model.MessErr)</span> 
+                <p class="message" >Not registered? <a href="#">Create an account</a></p><br />
+                <button type="submit">Login</button>
+            }
+
+            @*</form>*@
+
+        </div>
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="~/Css/Login/index.js"></script>
+    <script>
+        //$(document).ready(function () {
+        //    $("#resgis").click(function () {
+        //        $('#RegisFrm').animate({ height: "toggle", opacity: "toggle" }, "slow");
+
+        //    });
+
+        //});
+    </script>
+    <script type="text/javascript">
+            @*$(document).ready(function () {
+
+                $("#btnlogin").click(function () {
+                    debugger
+                    var username = $.trim($("#username").val());
+                    var password = $.trim($("#password").val());
+                    $.ajax({
+
+                        type: 'Post',
+                        url: '@Url.Action("Autherize","Login")',
+                        data: { us: username, ps: password },
+                        success: function (Data) {
+                             debugger
+                            if (Data != null) {
+
+                                window.location.href = '@Url.Action("Index","Home")';
+
+                            } else {
+                                alert('asdasd');
+                                $("#Erro").text("Username or Password invalid")
+                            }
+
+                        }
+
+
+                    });
+
+
+                });
+
+            });*@
+        </script>
+        <script>
+            //var Login = function () {
+            //    debugger
+            //    var username = $.trim($("#username").val());
+            //    var password = $.trim($("#password").val());
+            //    $.ajax({
+            //        type: "post",
+            //        data: [username, password],
+            //        url: "/Login/Autherize",
+            //        success: function (result) {
+            //            debugger
+            //            if (result == "Fail") {
+            //                alert('oke');
+            //            }
+            //            else {
+
+            //                window.location.href = "/Home/Index";
+            //            }
+            //        }
+
+            //    });
+
+            //    }
+            //$(document).ready(function () {
+
+            //    $("#btnlogin").click(function () {
+
+            //        var data = $("#frLogin").serialize();
+            //            $.ajax({
+            //                type: "post",
+            //                url: "/Login/Autherize",
+            //                data: data,
+
+            //                success: function (result) {
+            //                    debugger
+            //                    if (result == "Fail") {
+            //                        alert('oke');
+            //                    }
+            //                    else {
+            //                        alert('um');
+            //                        window.location.href = "Home/Index";
+            //                    }
+            //                }
+
+            //            });
+
+            //    });
+
+
+            //});
+
+        </script>
+
+</body>
+</html>
